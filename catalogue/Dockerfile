@@ -1,7 +1,7 @@
 FROM node:20
 # this creats /app and move there
 WORKDIR /app
-COPY packages.json .
+COPY package.json .
 COPY *.js .
 RUN npm install
 ENV MONGO="true" \
