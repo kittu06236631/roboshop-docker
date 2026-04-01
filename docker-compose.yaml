@@ -1,7 +1,7 @@
 services:
   catalogue:
     build: ./catalogue
-    image: joindevops/catalogue:1.0.0
+    image: kedas0623/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
@@ -13,14 +13,14 @@ services:
     - redis
   frontend:
    build: ./frontend
-   image: kedas0623/frontend:1.0.0
-   container_name: frontend
-   depends_on:
+  image: kedas0623/frontend:1.0.0
+  container_name: frontend
+  depends_on:
     - catalogue
     - user
   mongodb:
     build: ./mongodb   # it moves to mongodb directory
-    image: joindevops/mongodb:1.0.0   # docker build -t joindevops/mongodb:1.0.0
+    image: kedas0623/mongodb:1.0.0   # docker build -t joindevops/mongodb:1.0.0
     container_name: mongodb
   redis:
    image: redis:7.0
