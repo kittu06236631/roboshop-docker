@@ -12,8 +12,7 @@ services:
     container_name: mongodb
 
   frontend:
-    build:
-      context: ./frontend
+    build: ./frontend
     image: kedas0623/frontend:1.0.0
     container_name: frontend
     depends_on:
@@ -21,8 +20,7 @@ services:
       - user
 
   user:
-    build:
-      context: ./user
+    build: ./user
     image: kedas0623/user:1.0.0
     container_name: user
     depends_on:
