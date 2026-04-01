@@ -21,6 +21,7 @@ services:
     depends_on:
       - catalogue
       - user
+      - cart
 
   user:
     build:
@@ -29,6 +30,13 @@ services:
     container_name: user
     depends_on:
       - mongodb
+
+  cart:
+    build: ./cart
+    image : kedas0623/cart:1.0.0
+    container_name: cart
+    depends_on:
+      - redis    
 
   redis:
     image: redis:7.0
