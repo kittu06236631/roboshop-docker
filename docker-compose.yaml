@@ -23,6 +23,7 @@ services:
       - user
       - cart
       - shipping
+      - payment
 
   user:
     build:
@@ -31,6 +32,7 @@ services:
     container_name: user
     depends_on:
       - mongodb
+      - redis
 
   cart:
     build: ./cart
@@ -38,12 +40,32 @@ services:
     container_name: cart
     depends_on:
       - redis 
+      - catalogue
   shipping:
     build: ./shipping
     image: kedas0623/shipping:1.0.0
     container_name: shipping
     depends_on:
       - mysql
+      - cart
+
+  payment:
+   build: ./payment
+   image: kedas0623/payment:1.0.0
+   container_name: payment
+   environment:
+      environment:
+      CART_HOST: "cart"
+      CART_PORT: "8080"
+      USER_HOST: "user"
+      USER_PORT: "8080"
+      AMQP_HOST: "rabbitmq"
+      AMQP_USER: "roboshop"
+      AMQP_PASS: "roboshop123"
+   depends_on:
+    - rabbitmq
+    - user
+    - cart
 
   mysql:
     build: ./mysql
