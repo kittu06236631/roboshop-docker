@@ -22,6 +22,7 @@ services:
       - catalogue
       - user
       - cart
+      - shipping
 
   user:
     build:
@@ -36,12 +37,19 @@ services:
     image : kedas0623/cart:1.0.0
     container_name: cart
     depends_on:
-      - redis    
+      - redis 
+  shipping:
+    build: ./
+    image: kedas0623/shipping:1.0.0
+    container_name: shipping
+    depends_on:
+      - mysql
 
   mysql:
     build: ./mysql
-    image: kedas0623/mysql1.0.0
-    container_name: mysql    
+    image: kedas0623/mysql:1.0.0
+    container_name: mysql   
+   
 
   redis:
     image: redis:7.0
