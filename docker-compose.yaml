@@ -12,7 +12,8 @@ services:
     container_name: mongodb
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
     image: kedas0623/frontend:1.0.0
     container_name: frontend
     depends_on:
@@ -20,7 +21,8 @@ services:
       - user
 
   user:
-    build: ./user
+    build:
+      context: ./user
     image: kedas0623/user:1.0.0
     container_name: user
     depends_on:
@@ -34,4 +36,4 @@ networks:
   default:
     driver: bridge
     name: roboshop
-    external: true
+    external: false
