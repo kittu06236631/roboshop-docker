@@ -39,7 +39,7 @@ services:
     depends_on:
       - redis 
   shipping:
-    build: ./
+    build: ./shipping
     image: kedas0623/shipping:1.0.0
     container_name: shipping
     depends_on:
