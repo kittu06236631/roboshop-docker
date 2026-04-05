@@ -73,7 +73,7 @@ services:
     build: ./mysql
     image: kedas0623/mysql:1.0.0
     container_name: mysql  
-    version:
+    volume:
     - mysql:/var/lib/mysql
    
 
