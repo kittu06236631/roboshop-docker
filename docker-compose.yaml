@@ -74,7 +74,7 @@ services:
     image: kedas0623/mysql:1.0.0
     container_name: mysql  
     volume:
-    - mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
    
 
   redis:
